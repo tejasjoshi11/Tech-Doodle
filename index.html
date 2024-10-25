@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Word Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f4f8; /* Light gray background for a professional look */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Container for the word generator */
+        .container {
+            background-color: #ffffff; /* White background for the container */
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Club Logo without circular boundary */
+        .club-logo {
+            width: 150px; /* Adjusted size */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 15px;
+        }
+
+        /* Club Name Styling */
+        .club-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4a90e2; /* Blue color for professionalism */
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333; /* Dark text for contrast */
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        #randomWord {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4a90e2; /* Matching blue */
+            margin: 20px 0;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #4a90e2, #003366); /* Gradient button */
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.4s ease, transform 0.2s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #003366, #4a90e2); /* Reverse gradient on hover */
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Fade-in animation for the main container */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Larger logo and club name centered -->
+    <img src="logo.png" alt="Data Science Club Logo" class="club-logo">
+    <div class="club-name">Data Science Club</div>
+
+    <div class="container">
+        <h1>Draw The Term</h1>
+        <!-- Initial "?" before the word appears -->
+        <p id="randomWord">?</p>
+        <button onclick="generateWord()">Show The Word</button>
+    </div>
+
+    <script>
+        const words = [
+            "Artificial Intelligence", "Quantum Computing", "Blockchain", "Machine Learning", 
+            "Neural Network", "Deep Learning", "Internet of Things (IoT)", "Data Encryption", 
+            "Cache Memory", "Compiler", "Virtual Reality", "Big Data", "Captcha", "Soft Robotics", 
+            "Digital Fingerprint", "Phishing", "Gravitational Waves", "Swarm Intelligence", 
+            "DNA Sequencing", "Wormhole", "Dark Matter", "Black Hole", "Supernova", 
+            "Time Dilation", "Solar Flare", "Cryptography", "Man-in-the-Middle Attack", 
+            "Metaverse", "Smart Dust", "Edge Computing", "Solar Sail", "Artificial Photosynthesis", 
+            "Electric Jet", "Biometrics", "Fiber Optics", "Drone", "Generative AI", 
+            "Cyber Security", "Data Mining", "Front-End Developer", "Motherboard", "Server", 
+            "File Transfer Protocol (FTP)", "Router", "Satellite", "Smartphone", "Bluetooth", 
+            "FireFox", "Network Engineer", "Debugging", "Search Engine", "Joystick", "CD", 
+            "Battery", "Earpods", "Solar Panel", "Cloud Storage", "Instagram"
+        ];
+
+        function generateWord() {
+            const randomIndex = Math.floor(Math.random() * words.length);
+            const randomWordElement = document.getElementById("randomWord");
+
+            randomWordElement.style.opacity = 0;
+            randomWordElement.style.transform = "scale(1.5)";
+
+            setTimeout(() => {
+                randomWordElement.innerText = words[randomIndex];
+
+                randomWordElement.style.opacity = 1;
+                randomWordElement.style.transform = "scale(1)";
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
